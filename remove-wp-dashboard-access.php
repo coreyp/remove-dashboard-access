@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Remove Dashboard Access
+ * Plugin Name: Remove Dashboard Access (Fork)
  * Plugin URI: http://www.werdswords.com
  * Description: Removes Dashboard access for certain users based on capability.
  * Version: 1.0

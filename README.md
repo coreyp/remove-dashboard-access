@@ -1,5 +1,5 @@
-# Remove Dashboard Access
-##### (Remove Dashboard Access for Non-Admins)
+# Remove Dashboard Access (Fork)
+##### (Remove Dashboard Access for Non-SuperAdmins)
 
 * Contributors: DrewAPicture
 * Donate link: http://www.werdswords.com

@@ -6,6 +6,9 @@
  *
  * @package Remove Dashboard Access
  */
+/**
+ * For fork: all instances of manage_options have been changed to manage_network
+ */
 if ( ! class_exists( 'RDA_Options' ) ) {
 class RDA_Options {
 
@@ -57,8 +60,8 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 
 */
 function activate() {
 $options = array(
-'access_switch' => 'manage_options',
-'access_cap' => 'manage_options',
+'access_switch' => 'manage_network',
+'access_cap' => 'manage_network',
 'enable_profile' => 1,
 'redirect_url' => home_url()
 );
@@ -76,7 +79,7 @@ function options_page() {
 add_options_page(
 __( 'Dashboard Access Settings', 'remove_dashboard_access' ),
 __( 'Dashboard Access', 'remove_dashboard_access' ),
-'manage_options',
+'manage_network',
 'dashboard-access',
 array( $this, 'options_page_cb' )
 );
@@ -153,7 +156,7 @@ function access_switch_cb() {
 	$switch = esc_attr( $this->settings['access_switch'] );
 	?>
 	<p><label>
-			<input name="rda-settings[access_switch]" type="radio" value="manage_options" class="tag" <?php checked( 'manage_options', $switch ); ?> />
+			<input name="rda-settings[access_switch]" type="radio" value="manage_network" class="tag" <?php checked( 'manage_network', $switch ); ?> />
 			<?php _e( 'Administrators only', 'remove_dashboard_access' ); ?>
 		</label></p>
 	<p><label>
@@ -230,7 +233,7 @@ function output_caps_dropdown() {
 	ksort( $capabilities );
 
 	// Start <select> element, plus default first option
-	print( '<select name="rda-settings[access_cap]"><option selected="selected" value="manage_options">--- Select One ---</option>' );
+	print( '<select name="rda-settings[access_cap]"><option selected="selected" value="manage_network">--- Select One ---</option>' );
 
 	// Build capabilities dropdown
 	foreach ( $capabilities as $capability => $value ) {
@@ -306,13 +309,13 @@ function sanitize_options( $options ) {
  *
  * @since 1.0
  *
- * @return string $this->settings['access_cap'] if isset, otherwise, 'manage_options' (filterable)
+ * @return string $this->settings['access_cap'] if isset, otherwise, 'manage_network' (filterable)
  */
 function capability() {
 	if ( isset( $this->settings['access_cap'] ) )
 		return $this->settings['access_cap'];
 	else
-		return apply_filters( 'rda_default_access_cap', 'manage_options' );
+		return apply_filters( 'rda_default_access_cap', 'manage_network' );
 }
 
 /**
